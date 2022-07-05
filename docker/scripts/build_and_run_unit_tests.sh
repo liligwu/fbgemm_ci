@@ -3,7 +3,7 @@
 # exit immediately on failure, or if an undefined variable is used
 set -eux
 
-FBGEMM_REPO_DIR=${1:-/workspace/FBGEMM-private}
+FBGEMM_REPO_DIR=${1:-/workspace/FBGEMM}
 
 git config --global --add safe.directory $FBGEMM_REPO_DIR
 git config --global --add safe.directory $FBGEMM_REPO_DIR/third_party/asmjit
@@ -29,8 +29,6 @@ pip3 install scikit-build
 pip3 install --upgrade hypothesis
 
 pip3 list
-
-FBGEMM_REPO_DIR=${1:-/workspace/FBGEMM}
 
 cd $FBGEMM_REPO_DIR
 
