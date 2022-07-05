@@ -32,6 +32,10 @@ pip3 list
 
 cd $FBGEMM_REPO_DIR
 
+echo $PWD
+
+ls -l
+
 git log -1
 
 git submodule sync
