@@ -11,6 +11,27 @@ git config --global --add safe.directory $FBGEMM_REPO_DIR/third_party/cpuinfo
 git config --global --add safe.directory $FBGEMM_REPO_DIR/third_party/googletest
 git config --global --add safe.directory $FBGEMM_REPO_DIR/third_party/hipify_torch
 
+apt-get update --allow-insecure-repositories && \
+  apt-get install -y --allow-unauthenticated \
+  git \
+  jq \
+  sshfs \
+  sshpass \
+  unzip
+
+apt-get install -y locales
+locale-gen en_US.UTF-8
+
+pip3 install click
+pip3 install jinja2
+pip3 install ninja
+pip3 install scikit-build
+pip3 install --upgrade hypothesis
+
+pip3 list
+
+FBGEMM_REPO_DIR=${1:-/workspace/FBGEMM}
+
 cd $FBGEMM_REPO_DIR
 
 git log -1
