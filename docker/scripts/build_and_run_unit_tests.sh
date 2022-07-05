@@ -36,11 +36,6 @@ echo $PWD
 
 ls -l
 
-git log -1
-
-git submodule sync
-git submodule update --init --recursive
-
 cd fbgemm_gpu
 
 export MAX_JOBS=`nproc`
