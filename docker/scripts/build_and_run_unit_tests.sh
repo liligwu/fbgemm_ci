@@ -36,6 +36,8 @@ echo $PWD
 
 ls -l
 
+ls -l ./third_party
+
 cd fbgemm_gpu
 
 export MAX_JOBS=`nproc`
