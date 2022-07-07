@@ -11,6 +11,7 @@ git config --global --add safe.directory $FBGEMM_REPO_DIR/third_party/cpuinfo
 git config --global --add safe.directory $FBGEMM_REPO_DIR/third_party/googletest
 git config --global --add safe.directory $FBGEMM_REPO_DIR/third_party/hipify_torch
 
+# Install dependencies
 apt-get update --allow-insecure-repositories && \
   apt-get install -y --allow-unauthenticated \
   git \
@@ -30,22 +31,15 @@ pip3 install --upgrade hypothesis
 
 pip3 list
 
-cd $FBGEMM_REPO_DIR
-
-echo $PWD
-
-ls -l
-
-ls -l ./third_party
-
-cd fbgemm_gpu
-
+# Build fbgemm_gpu
+cd $FBGEMM_REPO_DIR/fbgemm_gpu
 export MAX_JOBS=`nproc`
 export PYTORCH_ROCM_ARCH="gfx908"
 CXX=hipcc python setup.py build develop
 
 export FBGEMM_TEST_WITH_ROCM=1
 
+# Test fbgemm_gpu
 cd test
 
 python layout_transform_ops_test.py --verbose
